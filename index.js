@@ -19,11 +19,17 @@ function callback(error, results, info) {
 	}
 	// console.log(JSON.stringify(results));
 
-	// Converts each DateTime values to '3 days ago' or similar, appends it to object
+	// Loops over results, allowing me to append or transform values
 	results.forEach(result => {
+		// Converts each DateTime values to '3 days ago' or similar, appends it to object
 		result['updated_at_timeago'] = timeago.format(result['updated_at']);
 		result['created_at_timeago'] = timeago.format(result['created_at']);
 		result['pushed_at_timeago']  = timeago.format(result['pushed_at']);
+
+		// Converts each DateTime values to '12/25/2015, 3:00:00 PM' or similar, appends it to object
+		result['updated_at_formatted'] = new Date(result['updated_at']).toLocaleString('en-US');
+		result['created_at_formatted'] = new Date(result['created_at']).toLocaleString('en-US');
+		result['pushed_at_formatted']  = new Date(result['pushed_at']).toLocaleString('en-US');
 	});
 
 	fs.mkdir('public/repos', { recursive: true }, (err) => {

@@ -18,6 +18,8 @@ ul
 				if repo['homepage']
 					| URL: 
 					a(href="#{repo['homepage']}") #{repo['homepage']} <br/>
+				| Created: 
+				time(datetime="#{repo['created_at']}" title="#{repo['created_at_formatted']}") #{repo['created_at_timeago']}<br/>
 				| Last updated: 
-				time(datetime="#{repo['updated_at']}") #{repo['updated_at_timeago']}
+				time(datetime="#{repo['updated_at']}" title="#{repo['updated_at_formatted']}") #{repo['updated_at_timeago']}
 			br
