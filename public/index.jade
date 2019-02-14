@@ -2,16 +2,20 @@ h1= title
 
 ul
 	for repo in public.repos._data
-		//- = console.log(repo)
-		li
-			a(href="#{repo['html_url']}") #{repo['name']}<br/>
-			| Stars: #{repo['stargazers_count']}<br/>
-			| Forks: #{repo['forks_count']}<br/>
-			if repo['license']
-				| License: 
-				abbr(title="#{repo['license']['name']}") #{repo['license']['spdx_id']}<br/>
-			if repo['language']
-				| Language: #{repo['language']}<br/>
-			if repo['description']
-				| Description: #{repo['description']}<br/>
-		br
+		if repo['fork'] == false
+			= console.log(repo)
+			li
+				a(href="#{repo['html_url']}") #{repo['name']}<br/>
+				| Stars: #{repo['stargazers_count']}<br/>
+				| Forks: #{repo['forks_count']}<br/>
+				if repo['license']
+					| License: 
+					abbr(title="#{repo['license']['name']}") #{repo['license']['spdx_id']}<br/>
+				if repo['language']
+					| Language: #{repo['language']}<br/>
+				if repo['description']
+					| Description: #{repo['description']}<br/>
+				if repo['homepage']
+					| URL: 
+					a(href="#{repo['homepage']}")= repo['homepage']
+			br
