@@ -1,1 +1,1 @@
-# [labs](https://labs.herokuapp.com/)
+# [labs](https://harp-labs.herokuapp.com/)

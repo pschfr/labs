@@ -1,5 +1,5 @@
 {
-  "name": "labs",
+  "name": "harp-labs",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,7 +10,10 @@
     "type": "git",
     "url": "git+https://github.com/pschfr/labs.git"
   },
-  "keywords": [],
+  "keywords": [
+    "harp",
+    "harpjs"
+  ],
   "author": "Paul Schaefer",
   "license": "MIT",
   "bugs": {
