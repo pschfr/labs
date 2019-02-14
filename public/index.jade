@@ -3,7 +3,7 @@ h1= title
 ul
 	for repo in public.repos._data
 		if repo['fork'] == false
-			= console.log(repo)
+			//- = console.log(repo)
 			li
 				a(href="#{repo['html_url']}") #{repo['name']}<br/>
 				| Stars: #{repo['stargazers_count']}<br/>

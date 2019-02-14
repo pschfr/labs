@@ -18,11 +18,12 @@ function callback(error, results, info) {
 		throw new Error(error.message);
 	}
 	// console.log(JSON.stringify(results));
-	// returns <repo_data>
 
-	// Converts a DateTime value to '3 days ago' or similar, adds it to data file.
-	results.forEach(element => {
-		element['updated_at_timeago'] = timeago.format(element['updated_at']);
+	// Converts each DateTime values to '3 days ago' or similar, appends it to object
+	results.forEach(result => {
+		result['updated_at_timeago'] = timeago.format(result['updated_at']);
+		result['created_at_timeago'] = timeago.format(result['created_at']);
+		result['pushed_at_timeago']  = timeago.format(result['pushed_at']);
 	});
 
 	fs.mkdir('public/repos', { recursive: true }, (err) => {
