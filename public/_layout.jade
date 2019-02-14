@@ -1,8 +1,11 @@
 doctype
 html
-  head
-    title= title
-    meta(name="viewport" content="width=device-width, initial-scale=1")
-    link(rel="stylesheet" href="/css/main.css")
-  body.sans-serif
-    != yield
+	head
+		title= title
+		meta(name="viewport" content="width=device-width, initial-scale=1")
+		link(rel="stylesheet" href="/css/main.css")
+	body.sans-serif.pa3
+		!= partial('_partials/header')
+		main
+			!= yield
+		!= partial('_partials/footer')
