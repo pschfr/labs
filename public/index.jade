@@ -17,5 +17,7 @@ ul
 					| Description: #{repo['description']}<br/>
 				if repo['homepage']
 					| URL: 
-					a(href="#{repo['homepage']}")= repo['homepage']
+					a(href="#{repo['homepage']}") #{repo['homepage']} <br/>
+				| Last updated: 
+				time(datetime="#{repo['updated_at']}") #{repo['updated_at_timeago']}
 			br

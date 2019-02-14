@@ -13,7 +13,10 @@
   },
   "keywords": [
     "harp",
-    "harpjs"
+    "harpjs",
+    "github-user-repos",
+    "timeago",
+    "timeago.js"
   ],
   "author": "Paul Schaefer",
   "license": "MIT",
@@ -23,6 +26,7 @@
   "homepage": "https://github.com/pschfr/labs#readme",
   "dependencies": {
     "github-user-repos": "^1.0.2",
-    "harp": "^0.29.0"
+    "harp": "^0.29.0",
+    "timeago.js": "^4.0.0-beta.2"
   }
 }

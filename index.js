@@ -1,4 +1,5 @@
 const fs = require('fs');
+const timeago = require('timeago.js');
 const repos = require('github-user-repos');
 const opts = {
 	'token': process.env.GITHUB_TOKEN,
@@ -16,8 +17,13 @@ function callback(error, results, info) {
 	if (error) {
 		throw new Error(error.message);
 	}
-	console.log(JSON.stringify(results));
+	// console.log(JSON.stringify(results));
 	// returns <repo_data>
+
+	// Converts a DateTime value to '3 days ago' or similar, adds it to data file.
+	results.forEach(element => {
+		element['updated_at_timeago'] = timeago.format(element['updated_at']);
+	});
 
 	fs.mkdir('public/repos', { recursive: true }, (err) => {
 		// if (err) throw err;
