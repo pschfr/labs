@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "serve": "node index.js; harp server --port $PORT",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,6 +22,7 @@
   },
   "homepage": "https://github.com/pschfr/labs#readme",
   "dependencies": {
+    "github-user-repos": "^1.0.2",
     "harp": "^0.29.0"
   }
 }
