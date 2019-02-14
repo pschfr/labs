@@ -27,6 +27,7 @@
   "dependencies": {
     "github-user-repos": "^1.0.2",
     "harp": "^0.29.0",
+    "tachyons-sass": "^4.9.5",
     "timeago.js": "^4.0.0-beta.2"
   }
 }
