@@ -1,25 +1,25 @@
-h1= title
-
-ul
-	for repo in public.repos._data
-		if repo['fork'] == false
-			//- = console.log(repo)
-			li
-				a(href="#{repo['html_url']}") #{repo['name']}<br/>
-				| Stars: #{repo['stargazers_count']}<br/>
-				| Forks: #{repo['forks_count']}<br/>
-				if repo['license']
-					| License: 
-					abbr(title="#{repo['license']['name']}") #{repo['license']['spdx_id']}<br/>
-				if repo['language']
-					| Language: #{repo['language']}<br/>
-				if repo['description']
-					| Description: #{repo['description']}<br/>
-				if repo['homepage']
-					| URL: 
-					a(href="#{repo['homepage']}") #{repo['homepage']} <br/>
-				| Created: 
-				time(datetime="#{repo['created_at']}" title="#{repo['created_at_formatted']}") #{repo['created_at_timeago']}<br/>
-				| Last updated: 
-				time(datetime="#{repo['updated_at']}" title="#{repo['updated_at_formatted']}") #{repo['updated_at_timeago']}
-			br
+for repo in public.repos._data
+	if repo['fork'] == false
+		//- = console.log(repo)
+		article.w-third-ns.w-50-m.fl.ba.b--black-10
+			h3.bg-near-white.br--top.mv0.pa3
+				a(href="#{repo['html_url']}")= repo['name']
+			.pa3.bt.b--black-10
+				p.ma0 Stars: #{repo['stargazers_count']}<br/>
+					| Forks: #{repo['forks_count']}<br/>
+					i.fas.fa-code-branch
+					if repo['license']
+						| License: 
+						abbr(title="#{repo['license']['name']}") #{repo['license']['spdx_id']}<br/>
+					if repo['language']
+						| Language: #{repo['language']}<br/>
+					if repo['description']
+						| Description: #{repo['description']}<br/>
+					if repo['homepage']
+						| URL: 
+						a(href="#{repo['homepage']}") #{repo['homepage']}<br/>
+					| Created: 
+					time(datetime="#{repo['created_at']}" title="#{repo['created_at_formatted']}") #{repo['created_at_timeago']}<br/>
+					| Last updated: 
+					time(datetime="#{repo['updated_at']}" title="#{repo['updated_at_formatted']}") #{repo['updated_at_timeago']}
+.cf
