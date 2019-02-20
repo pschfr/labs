@@ -1,7 +1,7 @@
 {
   "name": "harp-labs",
   "version": "1.0.0",
-  "description": "",
+  "description": "This is a list of my open-source software hosted here on GitHub! More to come soon.",
   "main": "index.js",
   "scripts": {
     "serve": "node index.js; harp server --port $PORT",
@@ -15,6 +15,7 @@
   "keywords": [
     "harp",
     "harpjs",
+    "github",
     "github-user-repos",
     "timeago",
     "timeago.js"

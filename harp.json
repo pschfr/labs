@@ -1,6 +1,7 @@
 {
 	"globals": {
 		"title": "Labs",
-		"source": "https://github.com/pschfr/labs/"
+		"source": "https://github.com/pschfr/labs/",
+		"description": "This is a list of my open-source software hosted here on GitHub! More to come soon."
 	}
 }
