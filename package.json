@@ -18,7 +18,10 @@
     "github",
     "github-user-repos",
     "timeago",
-    "timeago.js"
+    "timeago.js",
+    "tachyons",
+    "tachyons-sass",
+    "capture-website"
   ],
   "author": "Paul Schaefer",
   "license": "MIT",
@@ -27,6 +30,7 @@
   },
   "homepage": "https://github.com/pschfr/labs#readme",
   "dependencies": {
+    "capture-website": "^0.2.1",
     "github-user-repos": "^1.0.2",
     "harp": "^0.29.0",
     "tachyons-sass": "^4.9.5",

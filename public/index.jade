@@ -18,6 +18,8 @@ for repo in public.repos._data
 					if repo['homepage']
 						| URL: 
 						a(href="#{repo['homepage']}") #{repo['homepage']}<br/>
+						img(src="#{process.env.PROJECT_ROOT || '/'}repos/img/#{repo['name']}.jpg" alt="#{repo['name']}")
+						br
 					| Created: 
 					time(datetime="#{repo['created_at']}" title="#{repo['created_at_formatted']}") #{repo['created_at_timeago']}<br/>
 					| Last updated: 

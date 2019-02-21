@@ -1,13 +1,30 @@
+// Require dependencies
 const fs = require('fs');
 const timeago = require('timeago.js');
 const repos = require('github-user-repos');
-const opts = {
+const captureWebsite = require('capture-website');
+
+// My constants
+const repo_opts = {
 	'token': process.env.GITHUB_TOKEN,
 	'username': 'pschfr',
 	'type': 'public'
 };
+const capture_opts = {
+	'overwrite': true,
+	'width': 800,
+	'scaleFactor': 1,
+	'type': 'jpeg',
+	'quality': 0
+};
+const paths = {
+	'repo': __dirname + '/public/repos',
+	'data': __dirname + '/public/repos/_data.json',
+	'imgs': __dirname + '/public/repos/img'
+};
 
-function callback(error, results, info) {
+// Request the repos!
+repos(repo_opts, function callback(error, results, info) {
 	// Check for rate limit information...
 	if (info) {
 		console.error('Limit: %d', info.limit);
@@ -17,7 +34,19 @@ function callback(error, results, info) {
 	if (error) {
 		throw new Error(error.message);
 	}
-	// console.log(JSON.stringify(results));
+
+	// Create directories if they don't already exist
+	if (!fs.existsSync(paths['repo'])) {
+		fs.mkdir(paths['repo'], { recursive: true }, (error) => {
+			if (error) throw error;
+
+			if (!fs.existsSync(paths['imgs'])) {
+				fs.mkdir(paths['imgs'], { recursive: true }, (error) => {
+					if (error) throw error;
+				});
+			}
+		});
+	}
 
 	// Loops over results, allowing me to append or transform values
 	results.forEach(result => {
@@ -30,19 +59,24 @@ function callback(error, results, info) {
 		result['updated_at_formatted'] = new Date(result['updated_at']).toLocaleString('en-US');
 		result['created_at_formatted'] = new Date(result['created_at']).toLocaleString('en-US');
 		result['pushed_at_formatted']  = new Date(result['pushed_at']).toLocaleString('en-US');
-	});
 
-	fs.mkdir('public/repos', { recursive: true }, (err) => {
-		// if (err) throw err;
+		// If there is a homepage link, and it's not a fork,
+		if (result['homepage'] && result['fork'] == false) {
+			// and if the image doesn't already exist,
+			if (!fs.existsSync(`${paths['imgs']}/${result['name']}.jpg`)) {
+				// capture an image of it!
+				(async () => {
+					await captureWebsite.file(result['homepage'], `${paths['imgs']}/${result['name']}.jpg`, capture_opts);
+				})();
+			}
+		}
 	});
-	  
-	fs.writeFile('public/repos/_data.json', JSON.stringify(results), function(err) {
+	
+	fs.writeFile(paths['data'], JSON.stringify(results), function(err) {
 		if(err) {
 			return console.log(err);
 		}
 	
 		console.log("The file was saved!");
 	});
-}
-
-repos(opts, callback);
+});
