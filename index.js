@@ -1,4 +1,5 @@
 // Require dependencies
+const dotenv = require('dotenv').config();
 const fs = require('fs');
 const timeago = require('timeago.js');
 const repos = require('github-user-repos');

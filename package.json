@@ -4,7 +4,7 @@
   "description": "This is a list of my open-source software hosted here on GitHub! More to come soon.",
   "main": "index.js",
   "scripts": {
-    "serve": "node index.js; harp server --port $PORT",
+    "serve": "node index.js; harp server --port ${PORT:-9000}",
     "build": "node index.js; harp compile",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -31,6 +31,7 @@
   "homepage": "https://github.com/pschfr/labs#readme",
   "dependencies": {
     "capture-website": "^0.2.1",
+    "dotenv": "^6.2.0",
     "github-user-repos": "^1.0.2",
     "harp": "^0.29.0",
     "tachyons-sass": "^4.9.5",
